@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — READ Research Foundation</title>
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    :root{ --royal-1:#3b0b66; --royal-2:#6a0dad; --royal-3:#8b5cf6 }
+    body{ font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    h1,h2,h3{ font-family: "Times New Roman", Times, serif }
+  .hero-royal{ background: linear-gradient(135deg,var(--royal-1),var(--royal-2)); color:#fff }
+  /* pale purple patterned background + curls */
+  body{ background-color:#f6f0fc; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'><g fill='%236d4cff' fill-opacity='0.04'><circle cx='28' cy='32' r='10'/><rect x='60' y='20' width='18' height='18' rx='4'/><path d='M180 40c6 6 6 16 0 22s-16 6-22 0-6-16 0-22 16-6 22 0z'/></g></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'><g fill='none' stroke='%236d4cff' stroke-opacity='0.06' stroke-width='24' stroke-linecap='round'><path d='M120 500 C 180 420 300 380 420 420 C 540 460 660 460 740 380' /><path d='M40 220 C 140 140 260 160 380 200 C 500 240 620 160 760 180' /></g></svg>"); background-repeat: repeat, no-repeat; background-size:240px 240px, cover; background-position: 0 0, center center }
+  .nav-pill.active{ background:#ffffff; color:var(--royal-1); box-shadow:0 6px 18px rgba(16,10,54,0.08); transform:none }
+    .panel{ background: rgba(255,255,255,0.96); border-radius:12px; padding:1rem }
+    .site-header{ position: sticky; top:0; z-index:50; background: linear-gradient(90deg, rgba(0,0,0,0.28), rgba(0,0,0,0.06)); backdrop-filter: blur(6px); }
+    .nav-pill{ display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:999px; background: rgba(255,255,255,0.06); color:#fff; font-weight:600; font-size:1rem; text-decoration:none; transition: background .15s ease, box-shadow .15s ease }
+    .nav-pill:hover{ background: rgba(255,255,255,0.12); }
+    .nav-cta{ padding:10px 18px; border-radius:12px; background: linear-gradient(90deg,var(--royal-1),var(--royal-2)); color:#fff; box-shadow:0 8px 28px rgba(0,0,0,0.18); font-weight:700 }
+    h1{ font-size:2rem }
+    @media(min-width:768px){ h1{ font-size:2.6rem } }
+  </style>
+  <script>
+    function applyLogoColors(imgSrc){ const img=new Image(); img.crossOrigin='anonymous'; img.src=imgSrc; img.onload=()=>{ const c=document.createElement('canvas'); c.width=20; c.height=20; const ctx=c.getContext('2d'); ctx.drawImage(img,0,0,20,20); const d=ctx.getImageData(0,0,20,20).data; let r=0,g=0,b=0,n=0; for(let i=0;i<d.length;i+=4){ if(d[i+3]<128) continue; r+=d[i]; g+=d[i+1]; b+=d[i+2]; n++; } if(n===0) return; r=Math.round(r/n); g=Math.round(g/n); b=Math.round(b/n); const hsl=function(r,g,b){ r/=255; g/=255; b/=255; const max=Math.max(r,g,b), min=Math.min(r,g,b); let h=0,s=0,l=(max+min)/2; if(max!==min){ const d=max-min; s=l>0.5? d/(2-max-min): d/(max+min); switch(max){case r: h=(g-b)/d + (g<b?6:0); break; case g: h=(b-r)/d+2; break; case b: h=(r-g)/d+4; break;} h/=6;} return [h,s,l]; };
+      const [h,s,l]=hsl(r,g,b);
+      const hslToHex=(h,s,l)=>{ let r,g,b; if(s===0){r=g=b=l;}else{const hue2rgb=(p,q,t)=>{ if(t<0) t+=1; if(t>1) t-=1; if(t<1/6) return p+(q-p)*6*t; if(t<1/2) return q; if(t<2/3) return p+(q-p)*(2/3-t)*6; return p }; const q = l < 0.5 ? l*(1+s) : l + s - l*s; const p = 2*l - q; r=hue2rgb(p,q,h+1/3); g=hue2rgb(p,q,h); b=hue2rgb(p,q,h-1/3);} const toHex=x=>Math.round(x*255).toString(16).padStart(2,'0'); return `#${toHex(r)}${toHex(g)}${toHex(b)}` };
+      const base=hslToHex(h,Math.min(1,s*0.95),Math.max(0.14, l*0.8)); const mid=hslToHex(h,Math.min(1,s*1.05),Math.min(0.6,l*1.05)); const light=hslToHex(h,Math.max(0, s*0.55),Math.min(0.88, l*1.35));
+      document.documentElement.style.setProperty('--royal-1', base);
+      document.documentElement.style.setProperty('--royal-2', mid);
+      document.documentElement.style.setProperty('--royal-3', light);
+    }; img.onerror=()=>{} }
+  </script>
+</head>
+<body onload="applyLogoColors('assets/logo.jpg')">
+  <header class="site-header shadow-sm">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-4">
+        <img src="assets/logo.jpg" class="w-12 h-12" alt="logo">
+        <div>
+          <div style="font-family:'Times New Roman', Times, serif; font-weight:700;">READ Research Foundation</div>
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.85)">Responsible. Ethical. Accountable.</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-4">
+        <a class="nav-pill" href="about.html">About</a>
+        <a class="nav-pill" href="research.html">Research</a>
+        <a class="nav-pill" href="fellowship.html">Fellowship</a>
+        <a class="nav-pill" href="publications.html">Publications</a>
+        <a class="nav-pill" href="contact.html">Contact</a>
+        <a class="nav-cta" href="fellowship.html">Join Our Fellowship</a>
+      </nav>
+
+      <div class="md:hidden flex items-center gap-3">
+        <button id="nav-toggle" class="text-white" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden border-t">
+      <div class="px-6 py-4 space-y-3">
+        <a href="about.html" class="block nav-pill">About</a>
+        <a href="research.html" class="block nav-pill">Research</a>
+        <a href="fellowship.html" class="block nav-pill">Fellowship</a>
+        <a href="publications.html" class="block nav-pill">Publications</a>
+        <a href="contact.html" class="block nav-pill">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-12">
+    <h1 class="text-3xl font-bold mb-4">About READ Research Foundation</h1>
+    <p class="mb-6">The Responsible, Ethical AI Design (READ) Research Foundation is a globally oriented think tank committed to promoting ethical and explainable AI. Our mission is to advance trustworthy AI by combining deep engineering expertise with robust policy research.</p>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="panel">
+        <h3 class="font-semibold mb-2">What we study</h3>
+        <ul class="list-disc list-inside muted text-sm"><li>Responsible and explainable AI design</li><li>Ethical considerations across AI, hardware, and systems engineering</li><li>Policy-relevant research for trustworthy AI deployment</li></ul>
+      </div>
+      <div class="panel">
+        <h3 class="font-semibold mb-2">Where we focus</h3>
+        <ul class="list-disc list-inside muted text-sm"><li>Governance for edge AI, embedded systems, and infrastructure</li><li>Research applicable beyond large language models</li><li>Cross-disciplinary engagement with engineering and life sciences</li></ul>
+      </div>
+    </div>
+
+    <!-- Mission & Vision -->
+    <section class="mt-10">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="panel">
+          <h3 class="font-semibold mb-2">Mission</h3>
+          <p class="muted text-sm">To pioneer rigorous, interdisciplinary research and practical frameworks that ensure AI systems are designed and deployed with safety, accountability, and societal benefit in mind. We translate technical findings into actionable policy and engineering guidance.</p>
+        </div>
+        <div class="panel">
+          <h3 class="font-semibold mb-2">Vision</h3>
+          <p class="muted text-sm">A future where AI-driven systems are trustworthy by design, understood by stakeholders, and governed by evidence-based policy — across devices, infrastructure, and applications.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pillars / Approach -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-semibold mb-4">Our Approach</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="panel"><h4 class="font-semibold mb-2">Interdisciplinary Research</h4><p class="muted text-sm">Combine systems engineering, hardware expertise, ethics, and policy to deliver holistic insights.</p></div>
+        <div class="panel"><h4 class="font-semibold mb-2">Actionable Outputs</h4><p class="muted text-sm">Whitepapers, toolkits, benchmarks, and governance guides targeted to engineers and policymakers.</p></div>
+        <div class="panel"><h4 class="font-semibold mb-2">Stakeholder Engagement</h4><p class="muted text-sm">Co-design with industry, regulators, and affected communities to ensure practical uptake.</p></div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold mb-4">Team</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="panel text-center p-6">
+          <img src="assets/research1.png" alt="Dr. A" class="w-24 h-24 mx-auto rounded-full mb-3 object-cover">
+          <h4 class="font-semibold">Dr. A. Researcher</h4>
+          <div class="muted text-sm mb-2">Director, Technical Research</div>
+          <p class="text-sm muted">Leads work on explainability and system-level audits.</p>
+        </div>
+        <div class="panel text-center p-6">
+          <img src="assets/research2.png" alt="Prof. B" class="w-24 h-24 mx-auto rounded-full mb-3 object-cover">
+          <h4 class="font-semibold">Prof. B. Policy</h4>
+          <div class="muted text-sm mb-2">Head, Policy & Governance</div>
+          <p class="text-sm muted">Focuses on governance frameworks for edge and embedded AI.</p>
+        </div>
+        <div class="panel text-center p-6">
+          <img src="assets/research3.png" alt="C" class="w-24 h-24 mx-auto rounded-full mb-3 object-cover">
+          <h4 class="font-semibold">C. Engineer</h4>
+          <div class="muted text-sm mb-2">Systems Engineer</div>
+          <p class="text-sm muted">Works on hardware-aware, responsible AI deployment.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer removed -->
+  <script>
+    // Mobile menu toggle and safety: toggle menu, close on link click, and mark active nav item
+    document.getElementById('nav-toggle')?.addEventListener('click', function(){ document.getElementById('mobile-menu')?.classList.toggle('hidden'); });
+    document.querySelectorAll('#mobile-menu a.nav-pill').forEach(a=> a.addEventListener('click', ()=>{ document.getElementById('mobile-menu')?.classList.add('hidden'); }));
+    (function markActiveNav(){ try{ const links = document.querySelectorAll('a.nav-pill'); const path = window.location.pathname.split('/').pop() || 'index.html'; links.forEach(a=>{ const href = a.getAttribute('href'); if(!href) return; if(href.endsWith(path)) a.classList.add('active'); else a.classList.remove('active'); }); }catch(e){} })();
+  </script>
+</body>
+</html>
